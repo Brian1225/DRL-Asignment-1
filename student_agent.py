@@ -7,7 +7,9 @@ import torch
 from utils import DQNAgent
 
 agent = DQNAgent(16, 6)
-agent.Q.load_state_dict(torch.load('model.pth'))
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+agent.Q.load_state_dict(torch.load('model.pth', map_location=device))
+agent.Q.to(device)
 
 def get_action(obs):
     state = torch.tensor(obs, dtype=torch.float32)
