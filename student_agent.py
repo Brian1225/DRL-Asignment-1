@@ -3,9 +3,15 @@ import numpy as np
 import pickle
 import random
 import gym
+import torch
+from utils import DQNAgent
+
+agent = DQNAgent(16, 6)
+agent.Q.load_state_dict(torch.load('model.pth'))
 
 def get_action(obs):
-    
+    state = torch.tensor(obs, dtype=torch.float32)
+    return agent.select_action(state, 0.0, train=False)
     # TODO: Train your own agent
     # HINT: If you're using a Q-table, consider designing a custom key based on `obs` to store useful information.
     # NOTE: Keep in mind that your Q-table may not cover all possible states in the testing environment.
@@ -13,6 +19,5 @@ def get_action(obs):
     #       Otherwise, even if your agent performs well in training, it may fail during testing.
 
 
-    return random.choice([0, 1, 2, 3, 4, 5]) # Choose a random action
+    # return random.choice([0, 1, 2, 3, 4, 5]) # Choose a random action
     # You can submit this random agent to evaluate the performance of a purely random strategy.
-
