@@ -46,11 +46,16 @@ class DQNAgentTrainer:
         loss.backward()
         self.optimizer.step()
 
-    def train(self, env):
+    def train(self):
         self.agent.Q.to(self.device)
         self.agent.target_Q.to(self.device)
         reward_per_episode = [] 
+        env = SimpleTaxiEnv(grid_size=np.random.randint(5, 15))
         for episode in tqdm(range(self.n_episodes)):
+            if (episode + 1) % 2000 == 0:
+                env = SimpleTaxiEnv(grid_size=np.random.randint(5, 15))
+                self.epsilon = 0.8
+                print(f"New grid size: {env.grid_size}")
             obs, _ = env.reset()
             state = torch.tensor(obs, dtype=torch.float32)
             done = False
@@ -86,12 +91,10 @@ class DQNAgentTrainer:
         torch.save(self.agent.Q.state_dict(), 'model.pth')
 
 def main():
-    env = SimpleTaxiEnv()
-    _, _ = env.reset()
-    state_size = len(env.get_state())
-    action_size = 6
-    trainer = DQNAgentTrainer(state_size, action_size, n_episode=400)
-    trainer.train(env)
+    trainer = DQNAgentTrainer(16, 6, n_episode=10000)    
+    trainer.train()
+    torch.save(trainer.agent.Q.state_dict(), f'model.pth')
+    trainer.epsilon = 0.99
 
 if __name__ == '__main__':
     main()
