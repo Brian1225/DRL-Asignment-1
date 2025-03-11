@@ -1,6 +1,5 @@
-tqdm==4.67.1
+tqdm
 requests
 argparse
-torch==2.6.0
-numpy==1.26.4
-collections
+torch
+numpy
