@@ -19,7 +19,7 @@ from utils import DQNAgent, ReplayBuffer
 #       Otherwise, even if your agent performs well in training, it may fail during testing.
 
 class DQNAgentTrainer:
-    def __init__(self, state_size, action_size, gamma=0.99, alpha=0.05, eps_start=0.99, eps_end=0.1, decay_rate=0.9999, tau=0.3, buffer_size=10000, batch_size=128, n_episode=10000, update_step=100):
+    def __init__(self, state_size, action_size, gamma=0.99, alpha=0.05, eps_start=0.99, eps_end=0.1, decay_rate=0.9995, tau=0.3, buffer_size=10000, batch_size=128, n_episode=10000, update_step=100):
         self.state_size = state_size
         self.action_size = action_size
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -50,12 +50,8 @@ class DQNAgentTrainer:
         self.agent.Q.to(self.device)
         self.agent.target_Q.to(self.device)
         reward_per_episode = [] 
-        env = SimpleTaxiEnv(grid_size=np.random.randint(5, 15))
+        env = SimpleTaxiEnv()
         for episode in tqdm(range(self.n_episodes)):
-            if (episode + 1) % 2000 == 0:
-                env = SimpleTaxiEnv(grid_size=np.random.randint(5, 15))
-                self.epsilon = 0.8
-                print(f"New grid size: {env.grid_size}")
             obs, _ = env.reset()
             state = torch.tensor(obs, dtype=torch.float32)
             done = False
@@ -91,10 +87,8 @@ class DQNAgentTrainer:
         torch.save(self.agent.Q.state_dict(), 'model.pth')
 
 def main():
-    trainer = DQNAgentTrainer(16, 6, n_episode=10000)    
+    trainer = DQNAgentTrainer(16, 6, n_episode=10000)
     trainer.train()
-    torch.save(trainer.agent.Q.state_dict(), f'model.pth')
-    trainer.epsilon = 0.99
 
 if __name__ == '__main__':
     main()
