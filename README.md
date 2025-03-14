@@ -7,15 +7,14 @@ pip install -r requirements.txt
 
 ### 2. Train a DQN model
 - Please run the following python script, the arguments as shown below.
-
-    1. `n_episodes`: number of episodes to in the training loop
-    2. `buffer_size`: the size of the replay buffer to store the trajectories 
-    3. `batch_size`: batch size to perform one update
-    4. `update_step`: number of steps per episode to update the parameters in the target Q-network
-    5. `DECAY_RATE`: the decay speed of epsilon (which will be applied as `epsilon *= decay_rate`)
-    6. `gamma`: discount factor of the cumulative rewards
-    7. `alpha`: learning rate
-    8. `tau`: the soft update ratio of the target Q-network, respecting to the current Q-network ($Q_{target} = (1 - \tau) * Q_{target} + \tau * Q$)
+    - `n_episodes`: number of episodes to in the training loop
+    - `buffer_size`: the size of the replay buffer to store the trajectories 
+    - `batch_size`: batch size to perform one update
+    - `update_step`: number of steps per episode to update the parameters in the target Q-network
+    - `DECAY_RATE`: the decay speed of epsilon (which will be applied as `epsilon *= decay_rate`)
+    - `gamma`: discount factor of the cumulative rewards
+    - `alpha`: learning rate
+    - `tau`: the soft update ratio of the target Q-network, respecting to the current Q-network ($Q_{target} = (1 - \tau) \times Q_{target} + \tau \times Q$)
 ```
 python train.py --n_episode NUM_OF_EPISODES --buffer_size BUFFER_SIZE --batch_size BATCH_SIZE --update_step NUM_OF_UPDATE_STEPS --decay_rate DECAY_RATE --gamma GAMMA --alpha ≈ --tau TAU
 ```
