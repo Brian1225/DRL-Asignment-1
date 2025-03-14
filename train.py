@@ -10,7 +10,8 @@ import torch.optim as optim
 from tqdm import tqdm
 import random
 from utils import DQNAgent, ReplayBuffer
-
+import argparse
+import os
 
 # TODO: Train your own agent
 # HINT: If you're using a Q-table, consider designing a custom key based on `obs` to store useful information.
@@ -55,8 +56,8 @@ class DQNAgentTrainer:
             obs, _ = env.reset()
             state = torch.tensor(obs, dtype=torch.float32)
             done = False
-            episode_step = 0
             total_reward = 0
+            episode_steps = 0
             while not done:
                 action = self.agent.select_action(state.to(self.device), epsilon=self.epsilon)
                 next_obs, reward, done, _ = env.step(action)
@@ -72,23 +73,37 @@ class DQNAgentTrainer:
                         target = r + (1 - d.float()) * self.gamma * next_q_values
                     self.update(s, a, target)
                         
-                if (episode_step + 1) % self.update_step == 0:
+                if (episode_steps + 1) % self.update_step == 0:
                     for target_param, current_param in zip(self.agent.target_Q.parameters(), self.agent.Q.parameters()):
                         target_param.data.copy_(self.tau * current_param.data + (1 - self.tau) * target_param.data)
                 
-                episode_step += 1
+                episode_steps += 1
 
             self.epsilon = max(self.eps_end, self.decay_rate * self.epsilon)
             reward_per_episode.append(total_reward)
             if (episode + 1) % 100 == 0:
                 avg_reward = np.mean(reward_per_episode[-100:])
                 print(f"Episode: {episode + 1}, Average reward: {avg_reward}, Epsilon: {self.epsilon}")
-
-        torch.save(self.agent.Q.state_dict(), 'model.pth')
+        
+        if not os.path.exists('checkpoints/'):
+            os.makedirs('checkpoints/')
+        torch.save(self.agent.Q.state_dict(), f'checkpoints/model_{self.tau}_{self.update_step}.pth')
 
 def main():
-    trainer = DQNAgentTrainer(16, 6, n_episode=10000)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--n_episode', type=int, default=10000)
+    parser.add_argument('--buffer_size', type=int, default=10000)
+    parser.add_argument('--batch_size', type=int, default=128)
+    parser.add_argument('--update_step', type=int, default=100)
+    parser.add_argument('--decay_rate', type=float, default=0.9995)
+    parser.add_argument('--gamma', type=float, default=0.99)
+    parser.add_argument('--alpha', type=float, default=0.05)
+    parser.add_argument('--tau', type=float, default=0.3)
+    args = parser.parse_args()
+
+    trainer = DQNAgentTrainer(16, 6, n_episode=args.n_episode, buffer_size=args.buffer_size, batch_size=args.batch_size, update_step=args.update_step, decay_rate=args.decay_rate, gamma=args.gamma, alpha=args.alpha, tau=args.tau)
     trainer.train()
+
 
 if __name__ == '__main__':
     main()

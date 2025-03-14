@@ -5,14 +5,15 @@ import random
 import gym
 import torch
 from utils import DQNAgent
+import argparse
 
 agent = DQNAgent(16, 6)
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-agent.Q.load_state_dict(torch.load('model.pth', map_location=device))
+agent.Q.load_state_dict(torch.load("checkpoints/best_model.pth", map_location=device))
 agent.Q.to(device)
 
 def get_action(obs):
-    state = torch.tensor(obs, dtype=torch.float32)
+    state = torch.tensor(obs, dtype=torch.float32, device=torch.device('cuda' if torch.cuda.is_available() else 'cpu'))
     return agent.select_action(state, 0.0, train=False)
     # TODO: Train your own agent
     # HINT: If you're using a Q-table, consider designing a custom key based on `obs` to store useful information.
