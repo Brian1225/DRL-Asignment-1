@@ -8,14 +8,16 @@ import numpy as np
 class DQN(nn.Module):
     def __init__(self, state_size, action_size):
         super(DQN, self).__init__()
-        self.fc1 = nn.Linear(state_size, 64)
-        self.fc2 = nn.Linear(64, 64)
-        self.fc3 = nn.Linear(64, action_size)
+        self.fc1 = nn.Linear(state_size, 256)
+        self.fc2 = nn.Linear(256, 256)
+        self.fc3 = nn.Linear(256, 128)
+        self.fc4 = nn.Linear(128, action_size)
     
     def forward(self, x):
         x = F.relu(self.fc1(x))
         x = F.relu(self.fc2(x))
-        x = self.fc3(x)
+        x = F.relu(self.fc3(x))
+        x = self.fc4(x)
         return x
 
 class DQNAgent():
@@ -26,12 +28,11 @@ class DQNAgent():
         self.target_Q = DQN(state_size, action_size)
         self.target_Q.load_state_dict(self.Q.state_dict())
 
-    def select_action(self, state, epsilon, train=True, ):
+    def select_action(self, state, epsilon, train=True):
         if train:
             action = np.random.choice(self.action_size) if np.random.rand() < epsilon else self.Q(state).argmax().item()
         else:
-            action = self.Q(state).argmax().item()
-        
+            action = self.Q(state).detach().argmax().item()
         # You can submit this random agent to evaluate the performance of a purely random strategy.     
         # return random.choice([0, 1, 2, 3, 4, 5]) # Choose a random action
         return action

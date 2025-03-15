@@ -1,0 +1,67 @@
+  0%|                                                                                                                              | 0/10000 [00:00<?, ?it/s]/home/chunyulin/Desktop/DRL/DRL-Asignment-1/utils.py:47: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  torch.tensor(state, dtype=torch.float32).to(self.device),
+/home/chunyulin/Desktop/DRL/DRL-Asignment-1/utils.py:50: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  torch.tensor(next_state, dtype=torch.float32).to(self.device),
+ 23%|██████████████████████████▍                                                                                        | 2294/10000 [06:47<22:48,  5.63it/s]
+Episode: 100, Average reward: -202.03799999999984, Avg Loss: 142.86944297477604, Epsilon: 0.951217530242334
+Episode: 200, Average reward: -194.14999999999986, Avg Loss: 158.0125090676546, Epsilon: 0.9048147898403269
+Episode: 300, Average reward: -182.54999999999984, Avg Loss: 90.32905616551638, Epsilon: 0.8606756897186528
+Episode: 400, Average reward: -182.34999999999985, Avg Loss: 68.54110814273358, Epsilon: 0.8186898039137951
+Episode: 500, Average reward: -171.84299999999985, Avg Loss: 96.0848408138752, Epsilon: 0.7787520933134615
+Episode: 600, Average reward: -190.24999999999986, Avg Loss: 191.37439395964145, Epsilon: 0.7407626428726788
+Episode: 700, Average reward: -191.64999999999986, Avg Loss: 360.4422804474831, Epsilon: 0.7046264116491338
+Episode: 800, Average reward: -185.59999999999985, Avg Loss: 722.3710046839714, Epsilon: 0.6702529950324074
+Episode: 900, Average reward: -189.19999999999985, Avg Loss: 1263.5185447025299, Epsilon: 0.637556398572254
+Episode: 1000, Average reward: -196.19999999999985, Avg Loss: 1846.4639670801162, Epsilon: 0.606454822840097
+Episode: 1100, Average reward: -195.34999999999985, Avg Loss: 2497.6310773944856, Epsilon: 0.5768704587855094
+Episode: 1200, Average reward: -191.84999999999985, Avg Loss: 3088.418064866066, Epsilon: 0.548729293075715
+Episode: 1300, Average reward: -202.24999999999986, Avg Loss: 3520.201753540039, Epsilon: 0.5219609229311034
+Episode: 1400, Average reward: -197.74999999999986, Avg Loss: 3974.158230071068, Epsilon: 0.49649837999353363
+Episode: 1500, Average reward: -191.69999999999985, Avg Loss: 4477.676473884582, Epsilon: 0.4722779627867691
+Episode: 1600, Average reward: -196.54999999999984, Avg Loss: 4915.28650126934, Epsilon: 0.44923907734991153
+Episode: 1700, Average reward: -205.64999999999986, Avg Loss: 5413.849360108376, Epsilon: 0.4273240856451275
+Episode: 1800, Average reward: -214.89999999999986, Avg Loss: 6009.809196076393, Epsilon: 0.406478161360422
+Episode: 1900, Average reward: -209.84999999999985, Avg Loss: 6737.7741526699065, Epsilon: 0.3866491527467055
+Episode: 2000, Average reward: -203.69699999999986, Avg Loss: 7449.9801186800005, Epsilon: 0.3677874521460121
+Episode: 2100, Average reward: -211.89999999999986, Avg Loss: 7924.264310455323, Epsilon: 0.34984587188445015
+Episode: 2200, Average reward: -209.84999999999985, Avg Loss: 8277.50807788849, Epsilon: 0.3327795262194029
+Traceback (most recent call last):
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 136, in <module>
+    main()
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 132, in main
+    trainer.train(args)
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 84, in train
+    loss = self.update(s, a, target)
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 47, in update
+    value = self.agent.Q(state).gather(1, action.unsqueeze(1)).squeeze(1)
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/utils.py", line 17, in forward
+    x = F.relu(self.fc2(x))
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1744, in _call_impl
+    forward_call = (self._slow_forward if torch._C._get_tracing_state() else self.forward)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 136, in <module>
+    main()
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 132, in main
+    trainer.train(args)
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 84, in train
+    loss = self.update(s, a, target)
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 47, in update
+    value = self.agent.Q(state).gather(1, action.unsqueeze(1)).squeeze(1)
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/utils.py", line 17, in forward
+    x = F.relu(self.fc2(x))
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1744, in _call_impl
+    forward_call = (self._slow_forward if torch._C._get_tracing_state() else self.forward)
+KeyboardInterrupt

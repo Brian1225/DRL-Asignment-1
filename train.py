@@ -12,6 +12,7 @@ import random
 from utils import DQNAgent, ReplayBuffer
 import argparse
 import os
+import wandb
 
 # TODO: Train your own agent
 # HINT: If you're using a Q-table, consider designing a custom key based on `obs` to store useful information.
@@ -20,44 +21,54 @@ import os
 #       Otherwise, even if your agent performs well in training, it may fail during testing.
 
 class DQNAgentTrainer:
-    def __init__(self, state_size, action_size, gamma=0.99, alpha=0.05, eps_start=0.99, eps_end=0.1, decay_rate=0.9995, tau=0.3, buffer_size=10000, batch_size=128, n_episode=10000, update_step=100):
-        self.state_size = state_size
-        self.action_size = action_size
+    def __init__(self, args):
+        self.state_size = args.state_size
+        self.action_size = args.action_size
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-        self.gamma = gamma
-        self.alpha = alpha
-        self.epsilon = eps_start
-        self.eps_end = eps_end
-        self.decay_rate = decay_rate
-        self.tau = tau
-        self.agent = DQNAgent(state_size, action_size)
-        self.optimizer = optim.Adam(self.agent.Q.parameters(), lr=alpha)
-        self.criterion = nn.MSELoss()
-        self.memory = ReplayBuffer(buffer_size, self.device)
-        self.batch_size = batch_size
-        self.n_episodes = n_episode
-        self.update_step = update_step
+        self.gamma = args.gamma
+        self.alpha = args.alpha
+        self.epsilon = args.eps_start
+        self.eps_end = args.eps_end
+        self.decay_rate = args.decay_rate
+        self.tau = args.tau
+        self.agent = DQNAgent(args.state_size, args.action_size)
+        self.optimizer = optim.SGD(self.agent.Q.parameters(), lr=args.alpha)
+        self.criterion = nn.SmoothL1Loss()
+        self.memory = ReplayBuffer(args.buffer_size, self.device)
+        self.batch_size = args.batch_size
+        self.n_episodes = args.n_episode
+        self.update_step = args.update_step
         
     
     def update(self, state, action, target):
         self.agent.Q.train()
         self.optimizer.zero_grad()
+        action = action.to(self.device).long()
+        target = target.detach()
         value = self.agent.Q(state).gather(1, action.unsqueeze(1)).squeeze(1)
         loss = self.criterion(value, target)
         loss.backward()
         self.optimizer.step()
+        return loss.item()
 
-    def train(self):
+    def train(self, args):
+        if args.use_wandb:
+            wandb.login()
+            wandb.init(project=args.wandb_project, config=args, name=f"{args.wandb_run_name}_{args.batch_size}")
+
         self.agent.Q.to(self.device)
         self.agent.target_Q.to(self.device)
         reward_per_episode = [] 
         env = SimpleTaxiEnv()
+        loss_per_episode = []
         for episode in tqdm(range(self.n_episodes)):
             obs, _ = env.reset()
-            state = torch.tensor(obs, dtype=torch.float32)
+            with torch.no_grad():
+                state = torch.tensor(obs, dtype=torch.float32)
             done = False
-            total_reward = 0
-            episode_steps = 0
+            total_reward = 0          
+            total_loss = 0
+            steps = 0
             while not done:
                 action = self.agent.select_action(state.to(self.device), epsilon=self.epsilon)
                 next_obs, reward, done, _ = env.step(action)
@@ -71,38 +82,57 @@ class DQNAgentTrainer:
                     with torch.no_grad():
                         next_q_values = self.agent.target_Q(ns).max(1)[0]
                         target = r + (1 - d.float()) * self.gamma * next_q_values
-                    self.update(s, a, target)
+                    loss = self.update(s, a, target)
+                    total_loss += loss
                         
-                if (episode_steps + 1) % self.update_step == 0:
-                    for target_param, current_param in zip(self.agent.target_Q.parameters(), self.agent.Q.parameters()):
-                        target_param.data.copy_(self.tau * current_param.data + (1 - self.tau) * target_param.data)
-                
-                episode_steps += 1
+                if (steps + 1) % self.update_step == 0:
+                    target_net_state_dict = self.agent.target_Q.state_dict()
+                    Q_net_state_dict = self.agent.Q.state_dict()
+                    for key in Q_net_state_dict:
+                        target_net_state_dict[key] = Q_net_state_dict[key] * self.tau + target_net_state_dict[key] * (1 - self.tau)
+                    self.agent.target_Q.load_state_dict(target_net_state_dict)
 
+                steps += 1
+
+            if args.use_wandb:
+                wandb.log({'loss': total_loss / steps,
+                           'reward': total_reward / steps,
+                           'epsilon': self.epsilon,
+                            })
+                
             self.epsilon = max(self.eps_end, self.decay_rate * self.epsilon)
             reward_per_episode.append(total_reward)
+            loss_per_episode.append(total_loss)
             if (episode + 1) % 100 == 0:
                 avg_reward = np.mean(reward_per_episode[-100:])
-                print(f"Episode: {episode + 1}, Average reward: {avg_reward}, Epsilon: {self.epsilon}")
-        
+                avg_loss = np.mean(loss_per_episode[-100:])
+                print(f"Episode: {episode + 1}, Average reward: {avg_reward}, Avg Loss: {avg_loss}, Epsilon: {self.epsilon}")
+            
         if not os.path.exists('checkpoints/'):
             os.makedirs('checkpoints/')
-        torch.save(self.agent.Q.state_dict(), f'checkpoints/model_{self.tau}_{self.update_step}.pth')
+        torch.save(self.agent.Q.state_dict(), f'checkpoints/model_{self.batch_size}.pth')
 
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument('--wandb_project', type=str, default='drl_assignment1')
+    parser.add_argument('--wandb_run_name', type=str, default='dqn')
+    parser.add_argument('--state_size', type=int, default=16)
+    parser.add_argument('--action_size', type=int, default=6)
+    parser.add_argument('--eps_start', type=float, default=1.0)
+    parser.add_argument('--eps_end', type=float, default=0.1)
     parser.add_argument('--n_episode', type=int, default=10000)
     parser.add_argument('--buffer_size', type=int, default=10000)
     parser.add_argument('--batch_size', type=int, default=128)
     parser.add_argument('--update_step', type=int, default=100)
     parser.add_argument('--decay_rate', type=float, default=0.9995)
     parser.add_argument('--gamma', type=float, default=0.99)
-    parser.add_argument('--alpha', type=float, default=0.05)
+    parser.add_argument('--alpha', type=float, default=1e-4)
     parser.add_argument('--tau', type=float, default=0.3)
+    parser.add_argument('--use_wandb', action="store_true")
     args = parser.parse_args()
 
-    trainer = DQNAgentTrainer(16, 6, n_episode=args.n_episode, buffer_size=args.buffer_size, batch_size=args.batch_size, update_step=args.update_step, decay_rate=args.decay_rate, gamma=args.gamma, alpha=args.alpha, tau=args.tau)
-    trainer.train()
+    trainer = DQNAgentTrainer(args)
+    trainer.train(args)
 
 
 if __name__ == '__main__':

@@ -1,0 +1,64 @@
+  0%|                                                                                                                               | 0/5000 [00:00<?, ?it/s]/home/chunyulin/Desktop/DRL/DRL-Asignment-1/utils.py:45: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  torch.tensor(state, dtype=torch.float32).to(self.device),
+/home/chunyulin/Desktop/DRL/DRL-Asignment-1/utils.py:48: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  torch.tensor(next_state, dtype=torch.float32).to(self.device),
+ 30%|███████████████████████████████████▎                                                                                | 1520/5000 [04:25<10:08,  5.72it/s]
+Episode: 100, Average reward: -201.64999999999986, Avg Loss: 14.137443422405049, Epsilon: 0.951217530242334
+Episode: 200, Average reward: -197.16799999999984, Avg Loss: 17.54063527376391, Epsilon: 0.9048147898403269
+Episode: 300, Average reward: -183.84999999999985, Avg Loss: 18.56654068482574, Epsilon: 0.8606756897186528
+Episode: 400, Average reward: -178.89999999999986, Avg Loss: 30.394100443623028, Epsilon: 0.8186898039137951
+Episode: 500, Average reward: -175.04299999999984, Avg Loss: 24.51165663438849, Epsilon: 0.7787520933134615
+Episode: 600, Average reward: -183.49999999999986, Avg Loss: 41.804635266065596, Epsilon: 0.7407626428726788
+Episode: 700, Average reward: -187.54999999999984, Avg Loss: 50.52404658585787, Epsilon: 0.7046264116491338
+Episode: 800, Average reward: -175.99999999999986, Avg Loss: 52.1316000688076, Epsilon: 0.6702529950324074
+Episode: 900, Average reward: -181.29999999999984, Avg Loss: 60.35226443529129, Epsilon: 0.637556398572254
+Episode: 1000, Average reward: -182.29999999999984, Avg Loss: 64.26034417390824, Epsilon: 0.606454822840097
+Episode: 1100, Average reward: -187.59999999999985, Avg Loss: 70.02179683685303, Epsilon: 0.5768704587855094
+Episode: 1200, Average reward: -189.59999999999985, Avg Loss: 74.84289963960647, Epsilon: 0.548729293075715
+Episode: 1300, Average reward: -187.49999999999986, Avg Loss: 81.20376316428184, Epsilon: 0.5219609229311034
+Episode: 1400, Average reward: -187.99299999999985, Avg Loss: 85.23062920212746, Epsilon: 0.49649837999353363
+Episode: 1500, Average reward: -189.82799999999986, Avg Loss: 88.88744764208793, Epsilon: 0.4722779627867691
+Traceback (most recent call last):
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 139, in <module>
+    main()
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 135, in main
+    trainer.train(args)
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 85, in train
+    loss = self.update(s, a, target)
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 51, in update
+    self.optimizer.step()
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/optim/optimizer.py", line 493, in wrapper
+    out = func(*args, **kwargs)
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/optim/optimizer.py", line 91, in _use_grad
+    ret = func(self, *args, **kwargs)
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/optim/adamw.py", line 243, in step
+    adamw(
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/optim/optimizer.py", line 154, in maybe_fallback
+    return func(*args, **kwargs)
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/optim/adamw.py", line 875, in adamw
+    func(
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/optim/adamw.py", line 699, in _multi_tensor_adamw
+    exp_avg_sq_sqrt = torch._foreach_sqrt(device_exp_avg_sqs)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 139, in <module>
+    main()
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 135, in main
+    trainer.train(args)
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 85, in train
+    loss = self.update(s, a, target)
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 51, in update
+    self.optimizer.step()
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/optim/optimizer.py", line 493, in wrapper
+    out = func(*args, **kwargs)
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/optim/optimizer.py", line 91, in _use_grad
+    ret = func(self, *args, **kwargs)
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/optim/adamw.py", line 243, in step
+    adamw(
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/optim/optimizer.py", line 154, in maybe_fallback
+    return func(*args, **kwargs)
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/optim/adamw.py", line 875, in adamw
+    func(
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/optim/adamw.py", line 699, in _multi_tensor_adamw
+    exp_avg_sq_sqrt = torch._foreach_sqrt(device_exp_avg_sqs)
+KeyboardInterrupt

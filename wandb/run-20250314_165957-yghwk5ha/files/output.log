@@ -1,0 +1,71 @@
+  0%|                                                                                                                               | 0/5000 [00:00<?, ?it/s]/home/chunyulin/Desktop/DRL/DRL-Asignment-1/utils.py:47: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  torch.tensor(state, dtype=torch.float32).to(self.device),
+/home/chunyulin/Desktop/DRL/DRL-Asignment-1/utils.py:50: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  torch.tensor(next_state, dtype=torch.float32).to(self.device),
+  4%|████▉                                                                                                                | 212/5000 [00:37<14:08,  5.65it/s]
+Episode: 100, Average reward: -199.74999999999986, Avg Loss: 110.45899979770184, Epsilon: 0.951217530242334
+Episode: 200, Average reward: -196.49999999999986, Avg Loss: 142.34567787401377, Epsilon: 0.9048147898403269
+Traceback (most recent call last):
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 134, in <module>
+    main()
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 130, in main
+    trainer.train(args)
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 84, in train
+    loss = self.update(s, a, target)
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 45, in update
+    self.optimizer.zero_grad()
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/_compile.py", line 32, in inner
+    return disable_fn(*args, **kwargs)
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/_dynamo/eval_frame.py", line 745, in _fn
+    return fn(*args, **kwargs)
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/optim/optimizer.py", line 970, in zero_grad
+    with torch.autograd.profiler.record_function(self._zero_grad_profile_name):
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/autograd/profiler.py", line 769, in __exit__
+    torch.ops.profiler._record_function_exit._RecordFunction(record)
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/_ops.py", line 947, in __call__
+    if _must_dispatch_in_python(args, kwargs):
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/_ops.py", line 1001, in _must_dispatch_in_python
+    return pytree.tree_any(
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/utils/_pytree.py", line 1230, in tree_any
+    return any(map(pred, flat_args))
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/utils/_pytree.py", line 922, in tree_iter
+    if _is_leaf(tree, is_leaf=is_leaf):
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/utils/_pytree.py", line 700, in _is_leaf
+    return (is_leaf is not None and is_leaf(tree)) or _get_node_type(
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/utils/_pytree.py", line 693, in _get_node_type
+    if _is_namedtuple_instance(tree):
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/utils/_pytree.py", line 681, in _is_namedtuple_instance
+    def _is_namedtuple_instance(tree: Any) -> bool:
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 134, in <module>
+    main()
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 130, in main
+    trainer.train(args)
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 84, in train
+    loss = self.update(s, a, target)
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 45, in update
+    self.optimizer.zero_grad()
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/_compile.py", line 32, in inner
+    return disable_fn(*args, **kwargs)
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/_dynamo/eval_frame.py", line 745, in _fn
+    return fn(*args, **kwargs)
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/optim/optimizer.py", line 970, in zero_grad
+    with torch.autograd.profiler.record_function(self._zero_grad_profile_name):
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/autograd/profiler.py", line 769, in __exit__
+    torch.ops.profiler._record_function_exit._RecordFunction(record)
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/_ops.py", line 947, in __call__
+    if _must_dispatch_in_python(args, kwargs):
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/_ops.py", line 1001, in _must_dispatch_in_python
+    return pytree.tree_any(
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/utils/_pytree.py", line 1230, in tree_any
+    return any(map(pred, flat_args))
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/utils/_pytree.py", line 922, in tree_iter
+    if _is_leaf(tree, is_leaf=is_leaf):
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/utils/_pytree.py", line 700, in _is_leaf
+    return (is_leaf is not None and is_leaf(tree)) or _get_node_type(
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/utils/_pytree.py", line 693, in _get_node_type
+    if _is_namedtuple_instance(tree):
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/utils/_pytree.py", line 681, in _is_namedtuple_instance
+    def _is_namedtuple_instance(tree: Any) -> bool:
+KeyboardInterrupt

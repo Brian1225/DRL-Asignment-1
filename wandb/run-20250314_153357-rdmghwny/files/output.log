@@ -1,0 +1,55 @@
+  0%|                                                                                                                              | 0/10000 [00:00<?, ?it/s]/home/chunyulin/Desktop/DRL/DRL-Asignment-1/utils.py:48: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  torch.tensor(state, dtype=torch.float32).to(self.device),
+/home/chunyulin/Desktop/DRL/DRL-Asignment-1/utils.py:51: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  torch.tensor(next_state, dtype=torch.float32).to(self.device),
+ 18%|█████████████████████                                                                                              | 1827/10000 [06:30<29:05,  4.68it/s]
+Episode: 100, Average reward: -207.44999999999985, Avg Loss: 93.01600534975529, Epsilon: 0.951217530242334
+Episode: 200, Average reward: -197.29999999999984, Avg Loss: 89.15939838059246, Epsilon: 0.9048147898403269
+Episode: 300, Average reward: -191.89999999999986, Avg Loss: 78.16450822427869, Epsilon: 0.8606756897186528
+Episode: 400, Average reward: -172.24999999999986, Avg Loss: 80.90340433627367, Epsilon: 0.8186898039137951
+Episode: 500, Average reward: -172.59999999999985, Avg Loss: 85.77642741829158, Epsilon: 0.7787520933134615
+Episode: 600, Average reward: -156.4999999999999, Avg Loss: 85.02761754333973, Epsilon: 0.7407626428726788
+Episode: 700, Average reward: -150.3999999999999, Avg Loss: 72.1751466998458, Epsilon: 0.7046264116491338
+Episode: 800, Average reward: -150.4999999999999, Avg Loss: 100.9488641640544, Epsilon: 0.6702529950324074
+Episode: 900, Average reward: -135.8799999999999, Avg Loss: 98.66005423575639, Epsilon: 0.637556398572254
+Episode: 1000, Average reward: -133.74999999999991, Avg Loss: 87.27330177232623, Epsilon: 0.606454822840097
+Episode: 1100, Average reward: -162.49999999999986, Avg Loss: 141.15145185247064, Epsilon: 0.5768704587855094
+Episode: 1200, Average reward: -174.09999999999985, Avg Loss: 293.43087074756625, Epsilon: 0.548729293075715
+Episode: 1300, Average reward: -172.29999999999984, Avg Loss: 736.2468789243699, Epsilon: 0.5219609229311034
+Episode: 1400, Average reward: -177.84999999999985, Avg Loss: 1382.2300469970703, Epsilon: 0.49649837999353363
+Episode: 1500, Average reward: -174.29999999999984, Avg Loss: 1987.557056670189, Epsilon: 0.4722779627867691
+Episode: 1600, Average reward: -184.99799999999985, Avg Loss: 2598.0620045518876, Epsilon: 0.44923907734991153
+Episode: 1700, Average reward: -183.54999999999984, Avg Loss: 3266.5223165369034, Epsilon: 0.4273240856451275
+Episode: 1800, Average reward: -187.39999999999986, Avg Loss: 3939.9562919425966, Epsilon: 0.406478161360422
+Traceback (most recent call last):
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 131, in <module>
+    trainer = DQNAgentTrainer(args)
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 127, in main
+    parser.add_argument('--tau', type=float, default=0.3)
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 85, in train
+    loss = self.update(s, a, target)
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 50, in update
+    self.optimizer.step()
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/optim/optimizer.py", line 478, in wrapper
+    with torch.autograd.profiler.record_function(profile_name):
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/autograd/profiler.py", line 752, in __enter__
+    self.record = torch.ops.profiler._record_function_enter_new(
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/_ops.py", line 1123, in __call__
+    return self._op(*args, **(kwargs or {}))
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 131, in <module>
+    trainer = DQNAgentTrainer(args)
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 127, in main
+    parser.add_argument('--tau', type=float, default=0.3)
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 85, in train
+    loss = self.update(s, a, target)
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 50, in update
+    self.optimizer.step()
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/optim/optimizer.py", line 478, in wrapper
+    with torch.autograd.profiler.record_function(profile_name):
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/autograd/profiler.py", line 752, in __enter__
+    self.record = torch.ops.profiler._record_function_enter_new(
+  File "/home/chunyulin/anaconda3/envs/drl_hw1/lib/python3.10/site-packages/torch/_ops.py", line 1123, in __call__
+    return self._op(*args, **(kwargs or {}))
+KeyboardInterrupt

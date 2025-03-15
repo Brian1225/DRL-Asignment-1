@@ -1,0 +1,21 @@
+  0%|                                                                                                                              | 0/10000 [00:00<?, ?it/s]/home/chunyulin/Desktop/DRL/DRL-Asignment-1/utils.py:47: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  torch.tensor(state, dtype=torch.float32).to(self.device),
+/home/chunyulin/Desktop/DRL/DRL-Asignment-1/utils.py:50: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  torch.tensor(next_state, dtype=torch.float32).to(self.device),
+  0%|                                                                                                                              | 0/10000 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 133, in <module>
+    main()
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 129, in main
+    trainer.train(args)
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 92, in train
+    wandb.log({'loss': total_loss / steps,
+ZeroDivisionError: division by zero
+Traceback (most recent call last):
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 133, in <module>
+    main()
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 129, in main
+    trainer.train(args)
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 92, in train
+    wandb.log({'loss': total_loss / steps,
+ZeroDivisionError: division by zero

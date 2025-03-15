@@ -1,0 +1,55 @@
+  0%|                                                                                                                               | 0/5000 [00:00<?, ?it/s]/home/chunyulin/Desktop/DRL/DRL-Asignment-1/utils.py:45: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  torch.tensor(state, dtype=torch.float32).to(self.device),
+/home/chunyulin/Desktop/DRL/DRL-Asignment-1/utils.py:48: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  torch.tensor(next_state, dtype=torch.float32).to(self.device),
+ 64%|██████████████████████████████████████████████████████████████████████████▏                                         | 3199/5000 [22:00<12:39,  2.37it/s]
+Episode: 100, Average reward: -202.28799999999984, Avg Loss: 10.44217746861279, Epsilon: 0.951217530242334
+Episode: 200, Average reward: -190.64999999999986, Avg Loss: 11.512189114317298, Epsilon: 0.9048147898403269
+Episode: 300, Average reward: -191.39999999999986, Avg Loss: 11.227524986043573, Epsilon: 0.8606756897186528
+Episode: 400, Average reward: -171.88799999999983, Avg Loss: 15.417956920564174, Epsilon: 0.8186898039137951
+Episode: 500, Average reward: -172.14999999999986, Avg Loss: 15.654885309040546, Epsilon: 0.7787520933134615
+Episode: 600, Average reward: -163.16099999999986, Avg Loss: 14.19362204030156, Epsilon: 0.7407626428726788
+Episode: 700, Average reward: -162.04999999999984, Avg Loss: 14.079806393012404, Epsilon: 0.7046264116491338
+Episode: 800, Average reward: -149.34999999999988, Avg Loss: 13.700091255605221, Epsilon: 0.6702529950324074
+Episode: 900, Average reward: -143.44999999999987, Avg Loss: 14.811292788386345, Epsilon: 0.637556398572254
+Episode: 1000, Average reward: -142.8999999999999, Avg Loss: 15.346072881519795, Epsilon: 0.606454822840097
+Episode: 1100, Average reward: -139.9999999999999, Avg Loss: 14.69027337551117, Epsilon: 0.5768704587855094
+Episode: 1200, Average reward: -130.0499999999999, Avg Loss: 15.072410232573748, Epsilon: 0.548729293075715
+Episode: 1300, Average reward: -123.24999999999993, Avg Loss: 15.401757206320763, Epsilon: 0.5219609229311034
+Episode: 1400, Average reward: -119.29999999999993, Avg Loss: 14.275161583274603, Epsilon: 0.49649837999353363
+Episode: 1500, Average reward: -117.29999999999993, Avg Loss: 17.7904539591074, Epsilon: 0.4722779627867691
+Episode: 1600, Average reward: -110.94999999999995, Avg Loss: 18.190016923546793, Epsilon: 0.44923907734991153
+Episode: 1700, Average reward: -107.81299999999996, Avg Loss: 17.85944375127554, Epsilon: 0.4273240856451275
+Episode: 1800, Average reward: -98.54799999999996, Avg Loss: 18.01129826873541, Epsilon: 0.406478161360422
+Episode: 1900, Average reward: -127.54999999999993, Avg Loss: 31.385576884746552, Epsilon: 0.3866491527467055
+Episode: 2000, Average reward: -99.59999999999997, Avg Loss: 34.46179621487856, Epsilon: 0.3677874521460121
+Episode: 2100, Average reward: -87.74999999999996, Avg Loss: 23.695540529340505, Epsilon: 0.34984587188445015
+Episode: 2200, Average reward: -115.89999999999992, Avg Loss: 29.288430646061897, Epsilon: 0.3327795262194029
+Episode: 2300, Average reward: -133.84999999999988, Avg Loss: 48.9006267362833, Epsilon: 0.31654571904563433
+Episode: 2400, Average reward: -162.69299999999984, Avg Loss: 71.31353869318963, Epsilon: 0.3011038370793723
+Episode: 2500, Average reward: -174.04999999999984, Avg Loss: 89.90436541795731, Epsilon: 0.28641524825313086
+Episode: 2600, Average reward: -194.29899999999986, Avg Loss: 95.50776218652726, Epsilon: 0.27244320506708813
+Episode: 2700, Average reward: -176.74999999999986, Avg Loss: 91.2152608883381, Epsilon: 0.25915275265522114
+Episode: 2800, Average reward: -181.94999999999985, Avg Loss: 93.82270381808281, Epsilon: 0.24651064133620196
+Episode: 2900, Average reward: -174.82199999999986, Avg Loss: 93.54710185527802, Epsilon: 0.23448524343027585
+Episode: 3000, Average reward: -173.47399999999988, Avg Loss: 94.08873867750168, Epsilon: 0.22304647413401948
+Episode: 3100, Average reward: -175.34999999999985, Avg Loss: 94.95671964168548, Epsilon: 0.21216571625502262
+Episode: 3200, Average reward: -181.39999999999986, Avg Loss: 93.25371636867523, Epsilon: 0.2018157486181985
+Episode: 3300, Average reward: -174.84999999999985, Avg Loss: 91.03297899961471, Epsilon: 0.1919706779646106
+Episode: 3400, Average reward: -174.69999999999985, Avg Loss: 91.91973342299461, Epsilon: 0.1826058741724434
+Episode: 3500, Average reward: -176.94999999999985, Avg Loss: 93.28519717216491, Epsilon: 0.17369790863805412
+Episode: 3600, Average reward: -175.01999999999987, Avg Loss: 92.26943572878838, Epsilon: 0.1652244956629483
+Episode: 3700, Average reward: -179.39999999999986, Avg Loss: 91.12832237839699, Epsilon: 0.1571644367000449
+Episode: 3800, Average reward: -174.94999999999985, Avg Loss: 89.72366383433342, Epsilon: 0.1494975673197442
+Episode: 3900, Average reward: -173.09999999999985, Avg Loss: 91.04878626585007, Epsilon: 0.1422047067631241
+Episode: 4000, Average reward: -175.19999999999985, Avg Loss: 91.4960099029541, Epsilon: 0.13526760995605422
+Episode: 4100, Average reward: -181.64999999999986, Avg Loss: 90.08587679624557, Epsilon: 0.12866892186418147
+Episode: 4200, Average reward: -174.29999999999984, Avg Loss: 88.74254816770554, Epsilon: 0.12239213407459068
+Episode: 4300, Average reward: -178.54999999999984, Avg Loss: 88.18234134674073, Epsilon: 0.1164215434955208
+Episode: 4400, Average reward: -176.99999999999986, Avg Loss: 88.07635470151901, Epsilon: 0.11074221307080971
+Episode: 4500, Average reward: -175.08699999999982, Avg Loss: 87.95701956629753, Epsilon: 0.10533993441078586
+Episode: 4600, Average reward: -173.99999999999986, Avg Loss: 87.77970528125763, Epsilon: 0.1002011922461172
+Episode: 4700, Average reward: -174.99999999999986, Avg Loss: 88.3223287320137, Epsilon: 0.1
+Episode: 4800, Average reward: -176.79999999999984, Avg Loss: 89.13801460504531, Epsilon: 0.1
+Episode: 4900, Average reward: -172.68399999999983, Avg Loss: 88.3053863966465, Epsilon: 0.1
+Episode: 5000, Average reward: -178.19999999999985, Avg Loss: 88.34424338698388, Epsilon: 0.1

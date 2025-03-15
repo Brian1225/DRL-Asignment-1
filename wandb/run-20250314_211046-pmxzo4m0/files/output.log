@@ -1,0 +1,33 @@
+  0%|                                                                                                                               | 0/5000 [00:00<?, ?it/s]/home/chunyulin/Desktop/DRL/DRL-Asignment-1/utils.py:45: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  torch.tensor(state, dtype=torch.float32).to(self.device),
+/home/chunyulin/Desktop/DRL/DRL-Asignment-1/utils.py:48: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  torch.tensor(next_state, dtype=torch.float32).to(self.device),
+ 26%|█████████████████████████████▉                                                                                      | 1288/5000 [03:44<10:47,  5.73it/s]
+Episode: 100, Average reward: -196.49999999999986, Avg Loss: 12.29659096880816, Epsilon: 0.951217530242334
+Episode: 200, Average reward: -201.89999999999986, Avg Loss: 14.307456935294903, Epsilon: 0.9048147898403269
+Episode: 300, Average reward: -182.52999999999986, Avg Loss: 16.375932281073183, Epsilon: 0.8606756897186528
+Episode: 400, Average reward: -172.34999999999985, Avg Loss: 15.937415510411375, Epsilon: 0.8186898039137951
+Episode: 500, Average reward: -165.84999999999985, Avg Loss: 17.296978180864826, Epsilon: 0.7787520933134615
+Episode: 600, Average reward: -163.04999999999984, Avg Loss: 17.772228123466483, Epsilon: 0.7407626428726788
+Episode: 700, Average reward: -157.44999999999985, Avg Loss: 17.229502227816266, Epsilon: 0.7046264116491338
+Episode: 800, Average reward: -147.9999999999999, Avg Loss: 16.70913641669089, Epsilon: 0.6702529950324074
+Episode: 900, Average reward: -142.34999999999988, Avg Loss: 18.409097461013587, Epsilon: 0.637556398572254
+Episode: 1000, Average reward: -137.99999999999991, Avg Loss: 18.807430241210387, Epsilon: 0.606454822840097
+Episode: 1100, Average reward: -124.77099999999992, Avg Loss: 19.36844824624248, Epsilon: 0.5768704587855094
+Episode: 1200, Average reward: -156.9999999999999, Avg Loss: 33.0754978055507, Epsilon: 0.548729293075715
+Traceback (most recent call last):
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 139, in <module>
+    main()
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 135, in main
+    trainer.train(args)
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 73, in train
+    action = self.agent.select_action(state.to(self.device), epsilon=self.epsilon)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 139, in <module>
+    main()
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 135, in main
+    trainer.train(args)
+  File "/home/chunyulin/Desktop/DRL/DRL-Asignment-1/train.py", line 73, in train
+    action = self.agent.select_action(state.to(self.device), epsilon=self.epsilon)
+KeyboardInterrupt

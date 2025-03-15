@@ -1,0 +1,15 @@
+{"time":"2025-03-16T00:21:30.5922085+08:00","level":"INFO","msg":"stream: starting","core version":"0.19.8","symlink path":"/home/chunyulin/Desktop/DRL/DRL-Asignment-1/wandb/run-20250316_002130-qsxbfvw7/logs/debug-core.log"}
+{"time":"2025-03-16T00:21:30.706381134+08:00","level":"INFO","msg":"created new stream","id":"qsxbfvw7"}
+{"time":"2025-03-16T00:21:30.706438468+08:00","level":"INFO","msg":"stream: started","id":"qsxbfvw7"}
+{"time":"2025-03-16T00:21:30.706476259+08:00","level":"INFO","msg":"writer: Do: started","stream_id":"qsxbfvw7"}
+{"time":"2025-03-16T00:21:30.706520863+08:00","level":"INFO","msg":"sender: started","stream_id":"qsxbfvw7"}
+{"time":"2025-03-16T00:21:30.70659122+08:00","level":"INFO","msg":"handler: started","stream_id":"qsxbfvw7"}
+{"time":"2025-03-16T00:21:31.079103499+08:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-03-16T00:55:22.202461496+08:00","level":"INFO","msg":"stream: closing","id":"qsxbfvw7"}
+{"time":"2025-03-16T00:55:22.202531645+08:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-03-16T00:55:22.203595465+08:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-03-16T00:55:22.938649568+08:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-03-16T00:55:23.238447224+08:00","level":"INFO","msg":"handler: closed","stream_id":"qsxbfvw7"}
+{"time":"2025-03-16T00:55:23.238498424+08:00","level":"INFO","msg":"sender: closed","stream_id":"qsxbfvw7"}
+{"time":"2025-03-16T00:55:23.238489737+08:00","level":"INFO","msg":"writer: Close: closed","stream_id":"qsxbfvw7"}
+{"time":"2025-03-16T00:55:23.238590008+08:00","level":"INFO","msg":"stream: closed","id":"qsxbfvw7"}
